@@ -3,7 +3,10 @@
 name: builder
 
 # git push --tags 执行时候进行编译
-on: [push, pull_request]
+on:
+  push:
+    tags:
+      - v*
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -60,3 +63,10 @@ jobs:
       # - run: chmod +x appimage-builder-x86_64.AppImage
       # - run: sudo mv appimage-builder-x86_64.AppImage /usr/local/bin/appimage-builder
       # - run: appimage-builder --recipe AppImageBuilder.yml
+          
+      # 发布安装包
+      - name: Release Packages
+        uses: ncipollo/release-action@v1
+        with:
+            artifacts: "build/app/outputs/flutter-apk/app-*.apk"
+            allowUpdates: true
