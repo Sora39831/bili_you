@@ -150,5 +150,5 @@ enum _Fnval { dash, hdr, fourK, dolby, dolbyVision, eightK, av1 }
 ///视频流格式标识代码
 // ignore: library_private_types_in_public_api
 extension FnvalValue on _Fnval {
-  int get code => [16, 64, 128, 256, 512, 1024, 2048][index];
+  int get code => [16, 80, 128, 272, 528, 1040, 2064][index];
 }
